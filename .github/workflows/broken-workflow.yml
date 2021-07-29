@@ -1,19 +1,19 @@
 on:
   push:
-    branch: main
+    branches: main
     tags:
-      - 'v\d+'
+      - 'hoge-*'
 jobs:
   test:
     strategy:
       matrix:
-        os: [macos-latest, linux-latest]
+        os: [macos-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ matrix.platform }}-node-${{ hashFiles('**/package-lock.json') }}
-        if: ${{ github.repository.permissions.admin == true }}
+          key: ${{ matrix.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        if: ${{ github.repository == 'dummy' }}
       - run: npm install && npm test
