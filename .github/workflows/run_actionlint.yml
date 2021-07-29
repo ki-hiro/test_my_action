@@ -1,7 +1,8 @@
 name: reviewdog/action-actionlint
-on: [pull_request]
-  paths:
-    .github/workflows/**
+on: 
+  pull_request:
+    paths:
+      - .github/workflows/**
 
 jobs:
   actionlint1:
