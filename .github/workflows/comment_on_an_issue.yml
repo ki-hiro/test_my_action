@@ -4,6 +4,7 @@ on:
 jobs:
   comment:
     runs-on: ubuntu-latest
+    if: false
     steps:
       - uses: actions/github-script@0.9.0
         with:
